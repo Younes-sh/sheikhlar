@@ -3,13 +3,11 @@
     padding: 0%;
     box-sizing: border-box;
 }
-[class ^='col-']{
-    float: left;
-}
+
 
 body {
-  padding: 10px;
-  background-image: url("https://www.finds.ir/my/post/postimg/finds-15866314433.jpg");
+  padding: 10px 25px;
+  background-image: url("https://bataban.com/mag/images/What-is-life-like-in-heaven-2.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -23,11 +21,24 @@ body {
     max-width: 1200px;
     text-align: center;
     margin-top: 50px;
+   height: 100%;
 }
 .row{
-    content: '';
-    clear: both;
-    margin-top: 100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+@media screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .image {
@@ -42,8 +53,10 @@ body {
     object-fit: cover;
 }
 .text {
+    
     width: 400px;
     height: 600px;
+    padding: 20px;
     color: #000;
     text-shadow: 2px 2px 8px #fff;
 }

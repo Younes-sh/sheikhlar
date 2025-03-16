@@ -29,6 +29,9 @@ body {
     align-items: center;
 }
 @media screen and (max-width: 768px) {
+    .body {
+        padding: 10px;
+    }
     .container {
         display: flex;
         flex-direction: column;

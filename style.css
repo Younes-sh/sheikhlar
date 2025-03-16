@@ -13,6 +13,7 @@ body {
   background-attachment: fixed;
   color: #000;
   text-shadow: 2px 2px 7px #fff;
+  padding: 10px 0 50px;
 }
 
 .container {

@@ -1,83 +1,67 @@
-// تابع برای تبدیل تاریخ میلادی به شمسی
-function gregorianToJalali(gy, gm, gd) {
-    let g_d_m, jy, jm, jd, gy2, days;
-    g_d_m = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
-    gy2 = (gm > 2) ? (gy + 1) : gy;
-    days = 355666 + (365 * gy) + ~~((gy2 + 3) / 4) - ~~((gy2 + 99) / 100) + ~~((gy2 + 399) / 400) + gd + g_d_m[gm - 1];
-    jy = -1595 + (33 * ~~(days / 12053));
-    days %= 12053;
-    jy += 4 * ~~(days / 1461);
-    days %= 1461;
-    if (days > 365) {
-        jy += ~~((days - 366) / 365);
-        days = (days - 1) % 365;
-    }
-    if (days < 186) {
-        jm = 1 + ~~(days / 31);
-        jd = 1 + (days % 31);
-    } else {
-        jm = 7 + ~~((days - 186) / 30);
-        jd = 1 + ((days - 186) % 30);
-    }
-    return [jy, jm, jd];
-}
+// تاریخ شروع: 2 بهمن 1403 ساعت 11 صبح
+const startDateJalali = moment('1403/11/02 11:00:00', 'jYYYY/jMM/jDD HH:mm:ss');
 
-// تاریخ شروع (2 بهمن 1403 ساعت 11 صبح)
-const startDate = {
-    year: 1403,
-    month: 11,
-    day: 2,
-    hour: 11,
-    minute: 0,
-    second: 0
-};
-
-// عناصر HTML برای نمایش نتایج
+// گرفتن عناصر HTML برای نمایش
 const yearsElement = document.getElementById('years');
 const monthsElement = document.getElementById('months');
 const daysElement = document.getElementById('days');
 const hoursElement = document.getElementById('hours');
 const minutesElement = document.getElementById('minutes');
 const secondsElement = document.getElementById('seconds');
+const totalDaysElement = document.getElementById('total-days');
 
-// تابع برای محاسبه و نمایش تفاوت زمان
+// تابع برای به‌روزرسانی فاصله زمانی
 function updateCounter() {
-    const now = new Date();
-    const jalaliNow = gregorianToJalali(now.getFullYear(), now.getMonth() + 1, now.getDate());
+    const now = moment(); // تاریخ و زمان فعلی
 
-    const start = new Date(gregorianToJalali(startDate.year, startDate.month, startDate.day));
-    start.setHours(startDate.hour, startDate.minute, startDate.second, 0);
+    // مدت زمان سپری شده از شروع تا الان
+    const duration = moment.duration(now.diff(startDateJalali));
 
-    const diff = now - start;
+    // محاسبه بخش‌های زمانی
+    const totalSeconds = Math.floor(duration.asSeconds());
+    const seconds = totalSeconds % 60;
+    const totalMinutes = Math.floor(duration.asMinutes());
+    const minutes = totalMinutes % 60;
+    const totalHours = Math.floor(duration.asHours());
+    const hours = totalHours % 24;
 
-    const seconds = Math.floor(diff / 1000) % 60;
-    const minutes = Math.floor(diff / (1000 * 60)) % 60;
-    const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+    // محاسبه کل روزها
+    const totalDays = Math.floor(duration.asDays());
 
-    let totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
-    let years = jalaliNow[0] - startDate.year;
-    let months = jalaliNow[1] - startDate.month;
-    let days = jalaliNow[2] - startDate.day;
+    // محاسبه سال و ماه و روز شمسی با استفاده از moment-jalali
+    const startDateClone = startDateJalali.clone();
+    const jalaliNow = now.clone();
 
+    // فاصله سال و ماه و روز به صورت شمسی
+    const diffYears = jalaliNow.jYear() - startDateClone.jYear();
+    const diffMonths = jalaliNow.jMonth() - startDateClone.jMonth();
+    const diffDays = jalaliNow.jDate() - startDateClone.jDate();
+
+    let years = diffYears;
+    let months = diffMonths;
+    let days = diffDays;
+
+    // اصلاح ماه و روز اگر منفی شد
     if (days < 0) {
-        months--;
-        days += 30; // فرض بر 30 روز در ماه
+        months -= 1;
+        const previousMonth = jalaliNow.clone().subtract(1, 'jMonth');
+        days += previousMonth.daysInMonth();
     }
     if (months < 0) {
-        years--;
+        years -= 1;
         months += 12;
     }
 
+    // به‌روزرسانی مقادیر در صفحه
     yearsElement.textContent = years;
     monthsElement.textContent = months;
     daysElement.textContent = days;
     hoursElement.textContent = hours;
     minutesElement.textContent = minutes;
     secondsElement.textContent = seconds;
+    totalDaysElement.textContent = totalDays;
 }
 
-// به‌روزرسانی شمارشگر هر ثانیه
+// هر ثانیه به‌روزرسانی کن
 setInterval(updateCounter, 1000);
-
-// نمایش اولیه شمارشگر
-updateCounter();
+updateCounter(); // نمایش اولیه

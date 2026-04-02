@@ -92,12 +92,12 @@ const totalDaysElement = document.getElementById('total-days');
             if (!container) return;
             // لیست آیتم‌ها برای نمایش در قالب کارت
             const items = [
-                { label: 'ماه', id: 'months', icon: '📅' },
                 { label: 'سال', id: 'years', icon: '📆' },
-                { label: 'ساعت', id: 'hours', icon: '⏰' },
+                { label: 'ماه', id: 'months', icon: '📅' },
                 { label: 'روز', id: 'days', icon: '☀️' },
-                { label: 'ثانیه', id: 'seconds', icon: '⚡' },
-                { label: 'دقیقه', id: 'minutes', icon: '⌛' }
+                { label: 'ساعت', id: 'hours', icon: '⏰' },
+                { label: 'دقیقه', id: 'minutes', icon: '⌛' },
+                { label: 'ثانیه', id: 'seconds', icon: '⚡' }
             ];
             
             container.innerHTML = '';

@@ -27,8 +27,17 @@
             transition: all 0.3s ease;
         }
 
+        .container .title-container {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
         /* تیتر اصلی با افکت خط کشی */
         h1 {
+            
             text-align: center;
             font-size: clamp(1.8rem, 6vw, 3.2rem);
             font-weight: 600;
@@ -135,6 +144,7 @@
             background: rgba(0, 0, 0, 0.3);
             padding: 1.5rem 1rem;
             border-radius: 1.5rem;
+            
         }
         .time-card {
             background: linear-gradient(145deg, #1e2f3a, #0e1a22);

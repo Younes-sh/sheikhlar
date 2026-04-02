@@ -9,58 +9,45 @@
 </head>
 <body>
     
-    <div class="container">
-        <h1>روانشاد ولی شیخلر</h1>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <div class="image">
-                    <img  src="ValiSheikhlar.jpg" alt="vali sheikhlar">
-                </div>
+    
+<div class="container">
+    <h1>✨ روانشاد ولی شیخلر ✨</h1>
+    <div class="row">
+        <div class="col">
+            <div class="image">
+                <img src="ValiSheikhlar.jpg" alt="مرحوم ولی شیخلر" onerror="this.src='https://via.placeholder.com/500x600?text=عکس+یادبود'">
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <div class="text">
-                    <div class="LifeHistory">
-                        <p>از حق: 10/ شهریور/1330</p>
-                        <p>به حق: 2/ بهمن/1403</p>
-                    </div>
+        </div>
+        <div class="col">
+            <div class="text">
+                <div class="LifeHistory">
+                    <p>📅 از حق: ۱۰ / شهریور / ۱۳۳۰</p>
+                    <p>🕊️ به حق: ۲ / بهمن / ۱۴۰۳</p>
+                </div>
 
-                    <br />
-                    <br />
-                    <br />
-                    <p>از تاریخ 2 بهمن 1403 ساعت 11 صبح تا کنون</p>
-                    <div class="ElapsedTime">
-                        <p>ثانیه: <span id="seconds"></span></p>
-                        <span>&nbsp;&nbsp;</span>
-                        <p>دقیقه: <span id="minutes"></span></p>
-                        <span>&nbsp;&nbsp;</span>
-                        <p>ساعت: <span id="hours"></span></p>
-                        <span>&nbsp;&nbsp;</span>
-                        <p>روز: <span id="days"></span></p>
-                        <span>&nbsp;&nbsp;</span>
-                        <p>ماه: <span id="months"></span></p>
-                        <span>&nbsp;&nbsp;</span>
-                        <p>سال: <span id="years"></span></p>
-                        <hr/>
-                        <hr/>
-                        
-                    </div>
-                    <p>کل روزهای سپری‌شده: <span id="total-days"></span></p>
-                    <br />
-                    <br />
-                    <br />
-                    <div>
-                        <h3>صد بار خدا مرثیه خوان کرد مرا</h3>
-                        <br />
-                        <h3>در بوته صبر امتحان کرد مرا</h3>
-                        <br />
-                        <h3>هرگز نشکست پشتم از هیچ غمی</h3>
-                        <br />
-                        <h3>جز مرگ پدر که ناتوان کرد مرا</h3>
-                    </div>
+                <p style="font-size: 1rem; margin-bottom: 0.5rem;">⏳ از تاریخ ۲ بهمن ۱۴۰۳ ساعت ۱۱ صبح تا کنون</p>
+                
+                <!-- بخش زمان دقیق با طراحی کارتی -->
+                <div class="ElapsedTime" id="time-cards-container">
+                    <!-- توسط js داینامیک پر می‌شه ولی ساختار ثابت رو از قبل میسازیم برای نمایش بهتر -->
+                </div>
+
+                <div class="total-days-box">
+                    📆 کل روزهای سپری‌شده: <span id="total-days">۰</span>
+                </div>
+
+                <div class="poem">
+                    <h3>صد بار خدا مرثیه خوان کرد مرا</h3>
+                    <h3>در بوته صبر امتحان کرد مرا</h3>
+                    <h3>هرگز نشکست پشتم از هیچ غمی</h3>
+                    <h3>جز مرگ پدر که ناتوان کرد مرا</h3>
                 </div>
             </div>
         </div>
     </div>
+    <div class="note">یادش گرامی، روحش شاد و راهش پر رهرو باد</div>
+</div>
+
     <!-- محاسبه دقیق فاصله بین دو تاریخ شمسی (جلالی) و نمایش آن به صورت سال، ماه و روز، Jalali Moment  -->
     <script src="https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js"></script>
 

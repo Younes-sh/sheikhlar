@@ -96,8 +96,8 @@ const totalDaysElement = document.getElementById('total-days');
                 { label: 'سال', id: 'years', icon: '📆' },
                 { label: 'ساعت', id: 'hours', icon: '⏰' },
                 { label: 'روز', id: 'days', icon: '☀️' },
-                { label: 'ثانیه', id: 'seconds', icon: '⚡' }
-                { label: 'دقیقه', id: 'minutes', icon: '⌛' },
+                { label: 'ثانیه', id: 'seconds', icon: '⚡' },
+                { label: 'دقیقه', id: 'minutes', icon: '⌛' }
             ];
             
             container.innerHTML = '';
